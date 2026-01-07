@@ -5,31 +5,34 @@ const app = express();
 app.use(express.json());
 
 app.post("/movie", (req, res) => {
-  const userMovie = req.body.movie.toLowerCase();
+  // ✅ Get movie name from Dialogflow request
+  const userMovie =
+    req.body.queryResult.parameters.movie.toLowerCase().trim();
 
+  // ✅ Find movie in dataset
   const movie = moviesData.movies.find(
     m => m.title === userMovie
   );
 
+  // ❌ Movie not found
   if (!movie) {
     return res.json({
-      response: "Sorry 😕, I don’t have any idea about this movie."
+      fulfillmentText: "Sorry 😕, I don’t have any idea about this movie."
     });
   }
 
-  res.json({
-    title: movie.title,
-    release_year: movie.release_year,
-    languages: movie.languages,
-    genre: movie.genre,
-    director: movie.director,
-    cast: movie.cast,
-    budget: movie.budget_crore || "Information not available",
-    box_office: movie.box_office_crore || "Information not available",
-    summary: movie.summary
+  // ✅ Movie found → Dialogflow response
+  return res.json({
+    fulfillmentText: `
+🎬 *${movie.title.toUpperCase()}*
+📅 Year: ${movie.release_year}
+🎥 Director: ${movie.director}
+🌐 Languages: ${movie.languages.join(", ")}
+📖 Summary: ${movie.summary}
+`
   });
 });
 
 app.listen(3000, () => {
-  console.log("Server running on port 3000");
+  console.log("Dialogflow webhook running on port 3000");
 });
