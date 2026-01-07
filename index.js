@@ -5,34 +5,49 @@ const app = express();
 app.use(express.json());
 
 app.post("/movie", (req, res) => {
-  // ✅ Get movie name from Dialogflow request
-  const userMovie =
-    req.body.queryResult.parameters.movie.toLowerCase().trim();
+  try {
+    console.log("Incoming body:", req.body);
 
-  // ✅ Find movie in dataset
-  const movie = moviesData.movies.find(
-    m => m.title === userMovie
-  );
+    const movieName =
+      req.body.movie ||
+      req.body.queryResult?.parameters?.movie;
 
-  // ❌ Movie not found
-  if (!movie) {
+    if (!movieName) {
+      return res.json({
+        response: "Please tell me a movie name 🙂"
+      });
+    }
+
+    const userMovie = movieName.toLowerCase();
+
+    const movie = moviesData.movies.find(
+      m => m.title.toLowerCase() === userMovie
+    );
+
+    if (!movie) {
+      return res.json({
+        response: "Sorry 😕, I don’t have any idea about this movie."
+      });
+    }
+
     return res.json({
-      fulfillmentText: "Sorry 😕, I don’t have any idea about this movie."
-    });
-  }
+      response: `🎬 *${movie.title}* (${movie.release_year})
+Director: ${movie.director}
+Cast: ${movie.cast.join(", ")}
+Languages: ${movie.languages.join(", ")}
+Genre: ${movie.genre.join(", ")}
+Budget: ${movie.budget_crore || "N/A"} cr
+Box Office: ${movie.box_office_crore || "N/A"} cr
 
-  // ✅ Movie found → Dialogflow response
-  return res.json({
-    fulfillmentText: `
-🎬 *${movie.title.toUpperCase()}*
-📅 Year: ${movie.release_year}
-🎥 Director: ${movie.director}
-🌐 Languages: ${movie.languages.join(", ")}
-📖 Summary: ${movie.summary}
-`
-  });
+Summary: ${movie.summary}`
+    });
+
+  } catch (error) {
+    console.error("ERROR:", error);
+    res.status(500).json({ response: "Server error 😵" });
+  }
 });
 
-app.listen(3000, () => {
-  console.log("Dialogflow webhook running on port 3000");
+app.listen(process.env.PORT || 3000, () => {
+  console.log("Server running");
 });
