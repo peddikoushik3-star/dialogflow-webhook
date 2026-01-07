@@ -5,33 +5,27 @@ const app = express();
 app.use(express.json());
 
 app.post("/movie", (req, res) => {
-  try {
-    console.log("Incoming body:", req.body);
+  const movieName =
+    req.body.queryResult?.parameters?.movie ||
+    req.body.movie;
 
-    const movieName =
-      req.body.movie ||
-      req.body.queryResult?.parameters?.movie;
-
-    if (!movieName) {
-      return res.json({
-        response: "Please tell me a movie name 🙂"
-      });
-    }
-
-    const userMovie = movieName.toLowerCase();
-
-    const movie = moviesData.movies.find(
-      m => m.title.toLowerCase() === userMovie
-    );
-
-    if (!movie) {
-      return res.json({
-        response: "Sorry 😕, I don’t have any idea about this movie."
-      });
-    }
-
+  if (!movieName) {
     return res.json({
-      response: `🎬 *${movie.title}* (${movie.release_year})
+      fulfillmentText: "Sorry 😕 I didn't understand the movie name."
+    });
+  }
+
+  const movie = moviesData.movies.find(
+    m => m.title.toLowerCase() === movieName.toLowerCase()
+  );
+
+  if (!movie) {
+    return res.json({
+      fulfillmentText: `Sorry 😕, I don’t have any idea about ${movieName}.`
+    });
+  }
+
+  const reply = `🎬 *${movie.title}* (${movie.release_year})
 Director: ${movie.director}
 Cast: ${movie.cast.join(", ")}
 Languages: ${movie.languages.join(", ")}
@@ -39,18 +33,14 @@ Genre: ${movie.genre.join(", ")}
 Budget: ${movie.budget_crore || "N/A"} cr
 Box Office: ${movie.box_office_crore || "N/A"} cr
 
-Summary: ${movie.summary}`
-    });
+Summary: ${movie.summary}`;
 
-  } catch (error) {
-    console.error("ERROR:", error);
-    res.status(500).json({ response: "Server error 😵" });
-  }
+  return res.json({
+    fulfillmentText: reply
+  });
 });
 
 const PORT = process.env.PORT || 3000;
-
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log("Server running on port", PORT);
 });
-
