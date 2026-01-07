@@ -1,0 +1,114 @@
+{
+  "movies": [
+    {
+      "title": "baahubali the beginning",
+      "release_year": 2015,
+      "languages": ["Telugu", "Tamil", "Hindi", "Malayalam"],
+      "genre": ["Action", "Fantasy"],
+      "director": "S. S. Rajamouli",
+      "cast": ["Prabhas", "Rana Daggubati", "Anushka Shetty"],
+      "budget_crore": 180,
+      "box_office_crore": 650,
+      "summary": "A man discovers his royal heritage and fights for a powerful kingdom."
+    },
+    {
+      "title": "baahubali the conclusion",
+      "release_year": 2017,
+      "languages": ["Telugu", "Tamil", "Hindi", "Malayalam"],
+      "genre": ["Action", "Fantasy"],
+      "director": "S. S. Rajamouli",
+      "cast": ["Prabhas", "Rana Daggubati", "Anushka Shetty"],
+      "budget_crore": 250,
+      "box_office_crore": 1800,
+      "summary": "The story reveals why Kattappa killed Baahubali and the battle for the throne."
+    },
+    {
+      "title": "rrr",
+      "release_year": 2022,
+      "languages": ["Telugu", "Hindi", "Tamil", "Kannada", "Malayalam"],
+      "genre": ["Action", "Drama"],
+      "director": "S. S. Rajamouli",
+      "cast": ["N. T. Rama Rao Jr.", "Ram Charan"],
+      "budget_crore": 550,
+      "box_office_crore": 1200,
+      "summary": "A fictional story of two freedom fighters set in pre-independence India."
+    },
+    {
+      "title": "kgf chapter 1",
+      "release_year": 2018,
+      "languages": ["Kannada", "Hindi", "Telugu", "Tamil", "Malayalam"],
+      "genre": ["Action", "Drama"],
+      "director": "Prashanth Neel",
+      "cast": ["Yash", "Srinidhi Shetty"],
+      "budget_crore": 80,
+      "box_office_crore": 250,
+      "summary": "A gangster rises to power in the Kolar Gold Fields."
+    },
+    {
+      "title": "kgf chapter 2",
+      "release_year": 2022,
+      "languages": ["Kannada", "Hindi", "Telugu", "Tamil", "Malayalam"],
+      "genre": ["Action", "Drama"],
+      "director": "Prashanth Neel",
+      "cast": ["Yash", "Sanjay Dutt"],
+      "budget_crore": 100,
+      "box_office_crore": 1250,
+      "summary": "Rocky consolidates power while facing enemies from all sides."
+    },
+    {
+      "title": "pushpa the rise",
+      "release_year": 2021,
+      "languages": ["Telugu", "Hindi", "Tamil", "Kannada", "Malayalam"],
+      "genre": ["Action", "Crime"],
+      "director": "Sukumar",
+      "cast": ["Allu Arjun", "Rashmika Mandanna"],
+      "budget_crore": 170,
+      "box_office_crore": 360,
+      "summary": "A laborer rises in the world of red sandalwood smuggling."
+    },
+    {
+      "title": "pushpa the rule",
+      "release_year": 2024,
+      "languages": ["Telugu", "Hindi", "Tamil", "Kannada", "Malayalam"],
+      "genre": ["Action", "Crime"],
+      "director": "Sukumar",
+      "cast": ["Allu Arjun", "Rashmika Mandanna"],
+      "budget_crore": 500,
+      "box_office_crore": "Information not available",
+      "summary": "Pushpa faces greater threats while ruling the smuggling empire."
+    },
+    {
+      "title": "salaar part 1 ceasefire",
+      "release_year": 2023,
+      "languages": ["Telugu", "Hindi", "Tamil", "Kannada", "Malayalam"],
+      "genre": ["Action", "Thriller"],
+      "director": "Prashanth Neel",
+      "cast": ["Prabhas", "Prithviraj Sukumaran"],
+      "budget_crore": 270,
+      "box_office_crore": 700,
+      "summary": "A violent conflict unfolds in a dystopian kingdom."
+    },
+    {
+      "title": "2.0",
+      "release_year": 2018,
+      "languages": ["Tamil", "Hindi", "Telugu"],
+      "genre": ["Sci-Fi", "Action"],
+      "director": "S. Shankar",
+      "cast": ["Rajinikanth", "Akshay Kumar"],
+      "budget_crore": 570,
+      "box_office_crore": 800,
+      "summary": "A scientist battles a powerful force threatening mobile technology."
+    },
+    {
+      "title": "adipurush",
+      "release_year": 2023,
+      "languages": ["Hindi", "Telugu", "Tamil", "Kannada", "Malayalam"],
+      "genre": ["Mythology", "Action"],
+      "director": "Om Raut",
+      "cast": ["Prabhas", "Kriti Sanon"],
+      "budget_crore": 600,
+      "box_office_crore": 390,
+      "summary": "A modern retelling of the Ramayana."
+    }
+  ]
+}
